@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,13 +58,16 @@ fun Corroutines() {
 
         Button(onClick = {
             coroutineScope.launch {
-                text = "Cargando..."
-                delay(3000)
+                val randomCuenta = Random.nextInt(1, 11)
+                for (i in randomCuenta downTo 1) {
+                    text = "Cargando... $i"
+                    delay(1000)
+                }
                 suma = operando1 + operando2
                 text = "Suma Completada"
-                quehacer = "Sumar"
+                quehacer = "Siguiente"
                             }
-            if (quehacer=="Sumar")
+            if (quehacer=="Siguiente")
                 operando1=operando1*2
                 operando2=operando2*3
                 suma=0
